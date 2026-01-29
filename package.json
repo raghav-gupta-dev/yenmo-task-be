@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/raghav-gupta-dev/yenmo-task-be#readme",
   "dependencies": {
+    "chokidar": "^5.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "path": "^0.12.7",
+    "read-last-lines": "^1.8.0",
+    "ws": "^8.19.0"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
