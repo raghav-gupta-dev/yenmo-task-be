@@ -3,6 +3,7 @@ const path = require('path');
 const readline = require('readline');
 const chokidar = require('chokidar');
 const { broadcastLog } = require('./socket_handler');
+const { parseLogLine } = require('../utils/logparser');
 
 // Explicitly point to the file in the project root
 const LOG_FILE = path.join(process.cwd(), 'sample.log');
@@ -21,8 +22,11 @@ const readNewLogs = () => {
   const rl = readline.createInterface({ input: stream });
 
   rl.on('line', (line) => {
-    if (line.trim()) broadcastLog(line);
-  });
+    if (line.trim()) {
+        const logObject = parseLogLine(line);
+        broadcastLog(JSON.stringify(logObject));
+    }
+});
 
   rl.on('close', () => {
     lastReadSize = stats.size;
